@@ -1,0 +1,16 @@
+EXECUTE dbms_stats.gather_table_stats(ownname => 'schema', tabname => 'table_name', estimate_percent => DBMS_STATS.AUTO_SAMPLE_SIZE, method_opt => 'FOR ALL COLUMNS SIZE AUTO');
+EXECUTE dbms_stats.gather_table_stats(ownname => 'schema', tabname => 'table_name', estimate_percent => DBMS_STATS.AUTO_SAMPLE_SIZE, method_opt => 'FOR ALL COLUMNS SIZE AUTO',DEGREE=>8);
+-- Gather stats
+BEGIN
+   DBMS_STATS.gather_table_stats (ownname               => 'ADW'
+                                , tabname               => 'EARNINGS_PARTITIONED'
+                                , partname              => NULL
+                                , estimate_percent      => DBMS_STATS.auto_sample_size
+                                , block_sample          => FALSE
+                                , method_opt            => 'FOR ALL COLUMNS SIZE AUTO'
+                                , DEGREE                => 24
+                                , granularity           => 'ALL'
+                                , CASCADE               => TRUE
+                                , no_invalidate         => FALSE);
+END;
+/

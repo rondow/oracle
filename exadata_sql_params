@@ -16,3 +16,9 @@ ALTER SESSION SET parallel_degree_policy = 'MANUAL';
 ALTER SESSION SET parallel_degree_limit = '80';
 ALTER SESSION FORCE PARALLEL QUERY PARALLEL 22;
 ALTER SESSION SET skip_unusable_indexes = TRUE;
+ALTER SESSION SET unusable_indexes = TRUE;
+--ALTER SYSTEM SET OPTIMIZER_FEATURES_ENABLE='19.0.0.0'; 12.1.0.2, 12.2.0.1
+ALTER SESSION SET OPTIMIZER_FEATURES_ENABLE='19.1.0';
+ALTER SESSION SET optimizer_use_invisible_indexes = TRUE; --for single-row updates to use indexes (such as Primary Key, or Unique Key indexes) to easily get the row to be updated.
+ALTER SESSION SET CURSOR_SHARING=FORCE;
+ALTER SESSION SET OPTIMIZER_INDEX_COST_ADJ = 10000; --You can discourage use of indexes (and thus most nested loops) – by making the cost of index scans go up. 

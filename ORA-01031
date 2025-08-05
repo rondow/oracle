@@ -1,0 +1,3 @@
+When getting ORA-01031: insufficient privileges from stored procedure 
+USE CREATE OR REPLACE PROCEDURE.NAME
+AUTHID CURRENT_USER AS 
